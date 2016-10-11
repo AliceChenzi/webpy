@@ -1,0 +1,130 @@
+$def with (name,topic,data)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$name</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./static/css/bootstrap.css">
+    <link rel="stylesheet" href="./static/css/test.css">
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="./static/js/jquery-3.0.0.min.js"></script>
+    <script src="./static/js/bootstrap.js"></script>
+    <script src="./static/js/echarts.js"></script>
+    <script src="./static/js/fenlan.js"></script>
+    <script src="./static/js/graph.js"></script>
+
+</head>
+<body class="font_1">
+<div class="site-wrapper">
+    <input id="data" value=$data type="hidden"/>
+
+    <div class="">
+        <div class="cover-container">
+            <div class="masthead clearfix pos_stock">
+                <div class="inner">
+                    <h3 class="masthead-brand">AIDA</h3>
+
+                    <nav class="nav nav-masthead">
+                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">About us</a>
+                        <a class="nav-link" href="#">Help</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="stock_content_div stock_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!--<h2 class="mb80 bold text-center topic_20">Few things about us</h2>-->
+                        <div class="inner cover">
+                            <div class="">
+                                <form class="form-inline" method="POST">
+                                    <input type="text" class="form-control" placeholder="topic" value=$topic
+                                           name="topic" id="topicVal"/>
+                                    <input type="submit" class="btn btn-secondary-outline" value="Search"/>
+                                </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="tabbed-content button-tabs vertical ">
+                            <ul class="tabs">
+                                <li class="active">
+                                    <div class="tab-title" id="topic">
+                                        <span>Topic search</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tab-title" id="hot">
+                                        <span>Hot spot observation</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tab-title" id="trach">
+                                        <span>Research tracking</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tab-title" id="attitude">
+                                        <span>Attitude monitoring</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="content">
+                                <li class="active" id="info-li">
+                                    <div  style="display: block;">
+                                    <div class="tab-content" >
+
+                                        <div style="width: 600px;height:30px; " >
+                                            <nav class="nav nav-masthead  " style="float: left;height: 30px" >
+                                                <a class="nav-link active" style="display:inline;height: 30px;font-size: 15px" href="#">General</a>
+                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px" href="#">Population</a>
+                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px" href="#">News</a>
+                                            </nav>
+                                        </div>
+
+                                        <hr>
+                                        </div>
+                                        <div id="main" style="width: 600px;height:400px;"></div>
+
+
+                                    </div>
+                                </li>
+                                <li id="issues-li">
+                                    <div class="tab-content">
+                                        <!--<h5 class="bold">Marketable Issues</h5>-->
+                                        <hr>
+
+                                    </div>
+                                </li>
+                                <li id="price-li">
+                                    <div class="tab-content">
+                                        <!--<h5 class="bold">Pricing Forecast</h5>-->
+                                        <hr>
+
+                                    </div>
+                                </li>
+                                <li id="enterprise-li">
+                                    <div class="tab-content">
+                                        <!--<h5 class="bold">Affiliated Enterprise</h5>-->
+                                        <hr>
+
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mastfoot pos_stock">
+                <div class="inner">
+                    <p>Organized by <a href="#">@AIDA</a>.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>
