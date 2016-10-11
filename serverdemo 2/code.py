@@ -1,5 +1,5 @@
 # -*-coding:utf-8-*-
-__author__ = 'czz'
+__author__ = 'cz'
 
 import web
 import conmongo
