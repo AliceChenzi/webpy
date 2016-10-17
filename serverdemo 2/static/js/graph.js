@@ -1,13 +1,14 @@
 $(document).ready(function () {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
-    var data = $("#data").val();
-    var option = getOption(data);
+    // var data = $("#data").val();
+    var option = getOption("");
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
+    // $("#topic").trigger("click");
 
     $("#topic").click(function () {
-        // if(myChart.getOption()==null) {
+        if (myChart.getOption() == null) {
             var aj = $.ajax({
                 url: 'graph',// 跳转到 action
                 data: {
@@ -18,8 +19,8 @@ $(document).ready(function () {
                 cache: false,
                 dataType: 'json',
                 success: function (data) {
-                    if (data!=null) {
-                        // alert("ajax成功！");
+                    if (data != null) {
+                        alert("ajax成功！");
                         myChart.setOption(getOption(data));
                         // window.location.reload();
                     } else {
@@ -31,7 +32,7 @@ $(document).ready(function () {
                     alert("异常！");
                 }
             });
-        // }
+        }
 
     });
 
@@ -130,12 +131,20 @@ $(document).ready(function () {
         return option1;
     }
 
-        $('.nav a').click(function () {
+    $('.nav a').click(function () {
         $(this).closest('.nav').find('a').removeClass('active');
         $(this).addClass('active');
-        // var liIndex = $(this).index() + 1;
-        // $(this).closest('.tabbed-content').find('.content>li').removeClass('active');
-        // $(this).closest('.tabbed-content').find('.content>li:nth-of-type(' + liIndex + ')').addClass('active');
+        var liIndex = $(this).index() + 1;
+        $(this).closest('.tab-content').find('.child>li').removeClass('active');
+        $(this).closest('.tab-content').find('.child>li:nth-of-type(' + liIndex + ')').addClass('active');
+    });
+
+    $('.tabs li').click(function () {
+        $(this).closest('.tabs').find('li').removeClass('active');
+        $(this).addClass('active');
+        var liIndex = $(this).index() + 1;
+        $(this).closest('.tabbed-content').find('.father>li').removeClass('active');
+        $(this).closest('.tabbed-content').find('.father>li:nth-of-type(' + liIndex + ')').addClass('active');
     });
 
 });

@@ -1,4 +1,4 @@
-$def with (name,topic,data)
+$def with (name,topic,info,issues,enter)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,13 +11,12 @@ $def with (name,topic,data)
     <script src="./static/js/jquery-3.0.0.min.js"></script>
     <script src="./static/js/bootstrap.js"></script>
     <script src="./static/js/echarts.js"></script>
-    <script src="./static/js/fenlan.js"></script>
     <script src="./static/js/graph.js"></script>
 
 </head>
 <body class="font_1">
 <div class="site-wrapper">
-    <input id="data" value=$data type="hidden"/>
+    <input id="data"  type="hidden"/>
 
     <div class="">
         <div class="cover-container">
@@ -48,9 +47,15 @@ $def with (name,topic,data)
                         <hr>
                         <div class="tabbed-content button-tabs vertical ">
                             <ul class="tabs">
+
                                 <li class="active">
                                     <div class="tab-title" id="topic">
                                         <span>Topic search</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tab-title">
+                                        <span>Information</span>
                                     </div>
                                 </li>
                                 <li>
@@ -69,43 +74,119 @@ $def with (name,topic,data)
                                     </div>
                                 </li>
                             </ul>
-                            <ul class="content">
-                                <li class="active" id="info-li">
-                                    <div  style="display: block;">
-                                    <div class="tab-content" >
+                            <ul class="content father">
 
-                                        <div style="width: 600px;height:30px; " >
-                                            <nav class="nav nav-masthead  " style="float: left;height: 30px" >
-                                                <a class="nav-link active" style="display:inline;height: 30px;font-size: 15px" href="#">General</a>
-                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px" href="#">Population</a>
-                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px" href="#">News</a>
+                                <li class="active" >
+                                    <div class="tab-content">
+                                        <div style="width: 600px;height:30px; ">
+                                            <nav class="nav nav-masthead  " style="float: left;height: 30px">
+                                                <a class="nav-link active"
+                                                   style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">General</a>
+                                                <a class="nav-link"
+                                                   style="display:inline;height: 30px;font-size: 15px" href="#">Population</a>
+                                                <a class="nav-link"
+                                                   style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">News</a>
                                             </nav>
                                         </div>
-
                                         <hr>
+
+                                        <ul class="content child">
+                                            <li class="active">
+                                                <div class="tab-content">
+                                                    <div id="main" style="width: 600px;height:400px;"></div>
+
+                                                </div>
+                                            </li>
+                                            <li class="active">
+                                                <div class="tab-content">
+
+                                                    <div id="popu" style="width: 600px;height:400px;"></div>
+
+                                                </div>
+                                            </li>
+                                            <li class="active">
+                                                <div class="tab-content">
+
+                                                    <div id="news" style="width: 600px;height:400px;"></div>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tab-content">
+                                        <div style="width: 600px;height:30px; ">
+                                            <nav class="nav nav-masthead  " style="float: left;height: 30px">
+                                                <a class="nav-link active"
+                                                   style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">Essential Information</a>
+                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">Marketable Issues</a>
+                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">Pricing Forecast</a>
+                                                <a class="nav-link" style="display:inline;height: 30px;font-size: 15px"
+                                                   href="#">Affiliated Enterprise</a>
+
+                                            </nav>
                                         </div>
-                                        <div id="main" style="width: 600px;height:400px;"></div>
+                                        <hr>
+                                        <ul class="content child">
+                                            <li class="active">
+                                                <div class="tab-content">
 
+                                                    $for line in info.split('\n'):
+                                                    <p class="lead stock_content">
+                                                        $line.strip()
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="tab-content">
+                                                    $for line in issues.split('\n'):
+                                                    <p class="lead stock_content">
+                                                        $line.strip()
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="tab-content">
+                                                    <p class="lead stock_content">
+                                                        暂无数据。
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="tab-content">
+
+                                                    $for line in enter.split('\n'):
+                                                    <p class="lead stock_content">
+                                                        $line.strip()
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </ul>
 
                                     </div>
                                 </li>
-                                <li id="issues-li">
+                                <li >
                                     <div class="tab-content">
-                                        <!--<h5 class="bold">Marketable Issues</h5>-->
                                         <hr>
 
                                     </div>
                                 </li>
-                                <li id="price-li">
+                                <li >
                                     <div class="tab-content">
-                                        <!--<h5 class="bold">Pricing Forecast</h5>-->
                                         <hr>
 
                                     </div>
                                 </li>
-                                <li id="enterprise-li">
+                                <li ">
                                     <div class="tab-content">
-                                        <!--<h5 class="bold">Affiliated Enterprise</h5>-->
                                         <hr>
 
                                     </div>

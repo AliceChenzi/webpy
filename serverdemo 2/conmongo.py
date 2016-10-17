@@ -7,9 +7,13 @@ class DBConn:
     # servers = "mongodb://localhost:27017/"
 
     def connect(self):
+        # self.conn = MongoClient('192.168.1.113',27017)
         self.conn = MongoClient('192.168.1.133',27017)
+
         self.conn.test.authenticate("dba", "dba")
+        # self.db=self.conn['post']
         self.db=self.conn['test']
+
 
     def close(self):
         return self.conn.close()
